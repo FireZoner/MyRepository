@@ -16,8 +16,12 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.print("Hello ");
+<<<<<<< HEAD
         System.out.println("World!");
         System.out.print(" В ");
+=======
+        System.out.println("World too from me!");
+>>>>>>> feature/another
     }
     
 }
