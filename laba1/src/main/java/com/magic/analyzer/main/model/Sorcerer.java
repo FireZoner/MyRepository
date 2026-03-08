@@ -1,0 +1,37 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.magic.analyzer.main.model;
+
+import com.magic.analyzer.main.model.enums.Rank;
+
+/**
+ *
+ * @author zubbo
+ */
+public class Sorcerer {
+    private String name;
+    private Rank rank;
+    
+    public Sorcerer(String name, Rank rank) {
+        this.name = name;
+        this.rank = rank;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public Rank getRank() {
+        return this.rank;
+    }
+    
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
+}

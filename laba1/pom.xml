@@ -21,21 +21,21 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.15.2</version>
+            <version>2.21.0</version>
         </dependency>
         
         <!-- Jackson для XML -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.15.2</version>
+            <version>2.21.0</version>
         </dependency>
         
         <!-- Для работы с датами -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.15.2</version>
+            <version>2.21.0</version>
         </dependency>
     </dependencies>
     
@@ -44,21 +44,21 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.14.0</version>
             </plugin>
             
             <!-- Плагин для создания исполняемого JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>3.8.0</version>
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.magic.analyzer.Main</mainClass>
+                            <mainClass>com.magic.analyzer.main</mainClass>
                         </manifest>
                     </archive>
                     <finalName>${project.artifactId}-${project.version}</finalName>
