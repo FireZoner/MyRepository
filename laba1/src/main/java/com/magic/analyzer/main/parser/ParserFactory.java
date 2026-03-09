@@ -15,7 +15,7 @@ public class ParserFactory {
         String filename = file.getName().toLowerCase();
         
         if(filename.endsWith(".json")) {
-           return null; 
+           return new TextParser(); 
         }
         else if(filename.endsWith(".txt")) {
            return null;
