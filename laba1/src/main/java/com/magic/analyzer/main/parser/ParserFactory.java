@@ -21,7 +21,7 @@ public class ParserFactory {
            return new JsonParser();
         }
         else if(filename.endsWith(".xml")) {
-           return null;
+            return new XmlParser();
         } else {
             throw new IllegalArgumentException("Неподдерживаемый формат файла " + file.getName());
         }
