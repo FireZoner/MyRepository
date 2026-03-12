@@ -7,8 +7,6 @@ package com.magic.analyzer.main.parser;
 import com.magic.analyzer.main.model.*;
 import com.magic.analyzer.main.model.enums.*;
 import java.io.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.*;
 
 /**
@@ -60,11 +58,7 @@ public class TextParser implements MissionParser {
                 mission.setMissionId(value);
                 break;
             case "date":
-                try {
-                    mission.setDate(value);
-                } catch (DateTimeParseException e) {
-                    System.out.println("Ошибка парсинга даты: " + value);
-                }
+                mission.setDate(value);
                 break;
             case "location":
                 mission.setLocation(value);

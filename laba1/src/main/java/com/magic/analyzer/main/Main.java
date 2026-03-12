@@ -4,13 +4,17 @@
 
 package com.magic.analyzer.main;
 
+import javax.swing.*;
+
 /**
  *
  * @author zubbo
  */
-public class Main {
 
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        SwingUtilities.invokeLater(() -> {
+            new MissionAnalyzerGUI().setVisible(true);
+        });
     }
 }
