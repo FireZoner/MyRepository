@@ -23,20 +23,7 @@ public class XmlParser extends BaseParser {
     @Override
     public Mission parse(File file) throws IOException {
         JsonNode root = xmlMapper.readTree(file);
-        
-        Mission mission = new Mission();
-        
-        mission.setMissionId(getString(root, "missionId"));
-        mission.setDate(getString(root, "date"));
-        mission.setLocation(getString(root, "location"));
-        mission.setOutcome(getOutcome(root, "outcome"));
-        mission.setDamageCost(getLong(root, "damageCost"));
-        
-        String comment = getString(root, "comment");
-        if (comment == null) {
-            comment = getString(root, "note");
-        }
-        mission.setComment(comment);
+        Mission mission = parseMission(root);
         
         if (root.has("curse")) {
             JsonNode curseNode = root.get("curse");
@@ -75,31 +62,5 @@ public class XmlParser extends BaseParser {
         }
         
         return mission;
-    }
-
-    private void parseSorcerer(JsonNode node, Mission mission) {
-        Sorcerer sorcerer = new Sorcerer();
-        sorcerer.setName(getString(node, "name"));
-        sorcerer.setRank(getRank(node, "rank"));
-        mission.addSorcerer(sorcerer);
-    }
-    
-    private void parseTechnique(JsonNode node, Mission mission) {
-        Technique technique = new Technique();
-        technique.setName(getString(node, "name"));
-        technique.setType(getTechniqueType(node, "type"));
-        technique.setDamage(getLong(node, "damage"));
-        
-        String ownerName = getString(node, "owner");
-        if (ownerName != null) {
-            Sorcerer owner = findSorcererByName(mission, ownerName);
-            if (owner != null) {
-                technique.setOwner(owner);
-            } else {
-                technique.setOwner(new Sorcerer(ownerName, null));
-            }
-        }
-        
-        mission.addTechnique(technique);
     }
 }

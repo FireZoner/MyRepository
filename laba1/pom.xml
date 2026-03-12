@@ -54,7 +54,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.magic.analyzer.main</mainClass>
+                            <mainClass>com.magic.analyzer.main.Main</mainClass>
                         </manifest>
                     </archive>
                     <finalName>${project.artifactId}-${project.version}</finalName>

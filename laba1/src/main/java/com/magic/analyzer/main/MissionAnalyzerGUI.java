@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.filechooser.FileFilter;
 
 /**
  *
@@ -31,7 +32,7 @@ public class MissionAnalyzerGUI extends JFrame {
     }
     
     private void initUI() {
-        setTitle("Jujutsu Mission Analyzer");
+        setTitle("Mission Analyzer");
         setSize(900, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -63,7 +64,7 @@ public class MissionAnalyzerGUI extends JFrame {
     
     private void openFile() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+        fileChooser.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {
                 if (f.isDirectory()) return true;

@@ -82,4 +82,56 @@ public abstract class BaseParser implements MissionParser {
         }
         return null;
     }
+    
+    protected void parseSorcerer(JsonNode node, Mission mission) {
+        Sorcerer sorcerer = new Sorcerer();
+        sorcerer.setName(getString(node, "name"));
+        sorcerer.setRank(getRank(node, "rank"));
+        mission.addSorcerer(sorcerer);
+    }
+    
+    protected void parseTechnique(JsonNode node, Mission mission) {
+        Technique technique = new Technique();
+        technique.setName(getString(node, "name"));
+        technique.setType(getTechniqueType(node, "type"));
+        technique.setDamage(getLong(node, "damage"));
+        
+        String ownerName = getString(node, "owner");
+        if (ownerName != null) {
+            Sorcerer owner = findSorcererByName(mission, ownerName);
+            if (owner != null) {
+                technique.setOwner(owner);
+            } else {
+                technique.setOwner(new Sorcerer(ownerName, null));
+            }
+        }
+        
+        mission.addTechnique(technique);
+    }
+    
+    protected Mission parseMission(JsonNode root) {
+        Mission mission = new Mission();
+        
+        mission.setMissionId(getString(root, "missionId"));
+        mission.setDate(getString(root, "date"));
+        mission.setLocation(getString(root, "location"));
+        mission.setOutcome(getOutcome(root, "outcome"));
+        mission.setDamageCost(getLong(root, "damageCost"));
+        
+        String comment = getString(root, "comment");
+        if (comment == null) {
+            comment = getString(root, "note");
+        }
+        mission.setComment(comment);
+        
+        if (root.has("curse")) {
+            JsonNode curseNode = root.get("curse");
+            Curse curse = new Curse();
+            curse.setName(getString(curseNode, "name"));
+            curse.setThreatLevel(getThreatLevel(curseNode, "threatLevel"));
+            mission.setCurse(curse);
+        }
+        
+        return mission;
+    }
 }
